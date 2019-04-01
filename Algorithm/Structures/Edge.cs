@@ -28,9 +28,9 @@ namespace Algorithm.Structures
 
         public bool IsEqual(Edge edge, EdgeDirection? direction = null)
         {
-            return this.First == edge.First &&
-                this.Second == edge.Second &&
-               
+            return this.First == edge.First && 
+                this.Second == edge.Second && 
+                this.Direction == (direction == null ? edge.Direction : direction);
         }
     }
 }

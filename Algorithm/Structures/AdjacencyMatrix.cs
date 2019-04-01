@@ -23,6 +23,7 @@
 
             foreach(var v0 in this.vertices)
             {
+                j = 0;
                 foreach(var v1 in this.vertices)
                 {
                     edge = this.edges.TryGet(v0, v1);
