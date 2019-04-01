@@ -37,12 +37,13 @@ namespace Algorithm.Structures
             {
                 var direction = edge.Direction == EdgeDirection.FromFirstToSecond ?
                     EdgeDirection.FromSecondToFirst : EdgeDirection.FromFirstToSecond;
-                var oneWayEdge = this.edges.First(e => e.IsEqual(edge, direction));
+                var oneWayEdge = this.edges.FirstOrDefault(e => e.IsEqual(edge, direction));
 
                 if (oneWayEdge != null)
+                {
                     oneWayEdge.Direction = EdgeDirection.Both;
-
-                return;
+                    return;
+                } 
             }
 
             this.edges.Add(edge);

@@ -8,5 +8,10 @@
         {
             return this.Number.GetHashCode();
         }
+
+        public override bool Equals(object obj)
+        {
+            return this.GetHashCode() == obj.GetHashCode();
+        }
     }
 }

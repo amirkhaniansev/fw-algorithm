@@ -27,7 +27,7 @@ namespace Algorithm.Structures
 
         public void AddVertex(Vertex vertex)
         {
-            if (this.TryAddVertex(vertex))
+            if (!this.TryAddVertex(vertex))
                 throw new ArgumentException("Vertex already exists.");
         }
 

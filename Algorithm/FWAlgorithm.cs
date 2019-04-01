@@ -9,12 +9,36 @@ namespace Algorithm
 
         private readonly List<Step> steps;
 
+        private readonly int count;
+
+        private int current;
+
+        public Step FirstStep
+        {
+            get; set;
+        }
+
+        public Step LastStep
+        {
+            get; set;
+        }
+
         public FWAlgorithm(AdjacencyMatrix initialAdjacencyMatrix)
         {
             this.initialAdjacencyMatrix = initialAdjacencyMatrix;
-            this.steps = new List<Step>();
+            this.count = initialAdjacencyMatrix.Size;
+            this.steps = new List<Step>(initialAdjacencyMatrix.Size);
 
             this.DoFirstStep();
+        }
+
+        public bool Next()
+        {
+            if (this.current == this.count - 1)
+                return false;
+
+
+            return false;
         }
 
         private void DoFirstStep()
@@ -32,7 +56,7 @@ namespace Algorithm
             {
                 for (var j = 0; j < size; j++)
                 {
-                    firstStep.B[i, j] = new Cell
+                    firstStep.B[i, j] = new Cell<int>
                     {
                         Point = new Point
                         {
@@ -40,10 +64,14 @@ namespace Algorithm
                             Y = j
                         },
                         Color = Color.White,
-                        Value = 
+                        Value = j
                     };
                 }
             }
+
+            this.FirstStep = this.LastStep = firstStep;
+            this.steps.Add(firstStep);
+            this.current++;
         } 
     }
 }

@@ -1,16 +1,16 @@
 ﻿namespace Algorithm.Structures
 {
-    public class AdjacencyMatrix : SquareMatrix<Cell>
+    public class AdjacencyMatrix : SquareMatrix<Cell<double>>
     {
         private readonly VerticesCollection vertices;
 
         private readonly EdgesCollection edges;
 
-        public AdjacencyMatrix(VerticesCollection vertices, EdgesCollection edges) 
-            : base(vertices.Count)
+        public AdjacencyMatrix(Graph graph) 
+            : base(graph.Vertices.Count)
         {
-            this.vertices = vertices;
-            this.edges = edges;
+            this.vertices = graph.Vertices;
+            this.edges = graph.Edges;
 
             this.ConstructAdjacencyMatrix();
         }
@@ -27,7 +27,7 @@
                 {
                     edge = this.edges.TryGet(v0, v1);
 
-                    var cell = new Cell
+                    var cell = new Cell<double>
                     {
                         Point = new Point
                         {
@@ -37,7 +37,7 @@
                         Color = Color.White
                     };
 
-                    cell.Value = v0 == v1 ? 0M : edge == null ? default(decimal?) : edge.Length;
+                    cell.Value = v0 == v1 ? 0D : edge == null ? double.PositiveInfinity : edge.Length;
 
                     this[i, j++] = cell;
                 }
