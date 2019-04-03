@@ -49,7 +49,7 @@ namespace FWAV
 
                 var verticesCollection = new VerticesCollection(vertices);
                 var edgesCollection = new EdgesCollection(verticesCollection, edges);
-                
+
                 var graph = new Graph
                 {
                     Vertices = verticesCollection,
@@ -77,7 +77,7 @@ namespace FWAV
                             color = (ConsoleColor)m[i, j].Color;
 
                             Console.ForegroundColor = color;
-                            Console.Write(m[i, j].Value);
+                            Console.Write(m[i, j].Value.ToString().PadLeft(3));
                             Console.ResetColor();
                             Console.Write(space);
                         }
@@ -96,12 +96,20 @@ namespace FWAV
                     printer.Invoke(count, "A", step.A);
                     printer.Invoke(count, "B", step.B);
                     count++;
+
+                    Console.Read();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            } 
+            }
+            finally
+            {
+                Console.WriteLine("Hit <Enter> to close...");
+                Console.ReadLine();
+                Console.WriteLine("Closing...");
+            }
         }
     }
 }

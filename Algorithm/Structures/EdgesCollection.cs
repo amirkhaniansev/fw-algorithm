@@ -51,10 +51,11 @@ namespace Algorithm.Structures
 
         public Edge TryGet(Vertex from, Vertex to)
         {
-            return this.edges.FirstOrDefault(e => 
-                     e.First.Equals(from) &&
-                     e.Second.Equals(to) &&
-                     (e.Direction == EdgeDirection.FromFirstToSecond || e.Direction == EdgeDirection.Both));
+            return this.edges
+                .FirstOrDefault(e =>
+                    (e.First.Equals(from) && e.Second.Equals(to) && e.Direction == EdgeDirection.FromFirstToSecond) ||
+                    (e.First.Equals(from) && e.Second.Equals(to) && e.Direction == EdgeDirection.Both) ||
+                    (e.First.Equals(to) && e.Second.Equals(from) && e.Direction == EdgeDirection.Both));
         }
 
         public IEnumerator<Edge> GetEnumerator()
