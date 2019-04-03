@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Algorithm.Structures
+﻿namespace Algorithm.Structures
 {
     public class Edge
     {
