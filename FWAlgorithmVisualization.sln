@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm", "Algorithm\Algorithm.csproj", "{37D5CC08-7578-44B7-9EE4-59C501F8B3D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm", "Algorithm\Algorithm.csproj", "{37D5CC08-7578-44B7-9EE4-59C501F8B3D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FWAV", "FWAV\FWAV.csproj", "{AF304430-0FEF-4B4C-9537-188506BEEDF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7E6E1CFE-1A74-498B-8A48-6492CFB5070D}"
+	ProjectSection(SolutionItems) = preProject
+		Presentation\Floyd-Warshall Algorithm.pdf = Presentation\Floyd-Warshall Algorithm.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
