@@ -6,8 +6,8 @@ namespace Algorithm
     {
         public int Number { get; set; }
 
-        public AdjacencyMatrix A { get; set; }
+        public SquareMatrix<Cell<double>> A { get; set; }
 
-        public SupportanceMatrix B { get; set; }
+        public SquareMatrix<Cell<int>> B { get; set; }
     }
 }

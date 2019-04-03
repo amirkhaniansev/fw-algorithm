@@ -13,10 +13,10 @@ namespace Algorithm.Structures
 
         public int Count => this.edges.Count;
 
-        public EdgesCollection(VerticesCollection vertices)
+        public EdgesCollection(VerticesCollection vertices, IEnumerable<Edge> edges)
         {
             this.vertices = vertices;
-            this.edges = new HashSet<Edge>();
+            this.edges = new HashSet<Edge>(edges);
         }
 
         public void AddEdge(Edge edge)
@@ -52,8 +52,8 @@ namespace Algorithm.Structures
         public Edge TryGet(Vertex from, Vertex to)
         {
             return this.edges.FirstOrDefault(e => 
-                     e.First == from &&
-                     e.Second == to &&
+                     e.First.Equals(from) &&
+                     e.Second.Equals(to) &&
                      (e.Direction == EdgeDirection.FromFirstToSecond || e.Direction == EdgeDirection.Both));
         }
 
