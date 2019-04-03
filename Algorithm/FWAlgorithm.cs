@@ -35,7 +35,7 @@ namespace Algorithm
                 return true;
             }
 
-            if (this.current == this.count - 1)
+            if (this.current == this.count)
                 return false;
 
             var step = this.CreateStep();
