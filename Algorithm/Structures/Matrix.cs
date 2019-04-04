@@ -26,14 +26,32 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Structure for representing generic matrix.
+    /// </summary>
+    /// <typeparam name="T">Type of cell in matrix.</typeparam>
     public class Matrix<T>
     {
+        /// <summary>
+        /// Storage for matrix
+        /// </summary>
         private readonly T[][] baseMatrix;
 
+        /// <summary>
+        /// Count of rows
+        /// </summary>
         private readonly int countOfRows;
 
+        /// <summary>
+        /// Count of columnss
+        /// </summary>
         private readonly int countOfColumns;
 
+        /// <summary>
+        /// Creates new instance of <see cref="Matrix{T}"/>
+        /// </summary>
+        /// <param name="countOfRows">count of rows</param>
+        /// <param name="countOfColumns">count of columns</param>
         public Matrix(int countOfRows, int countOfColumns)
         {
             this.countOfRows = countOfRows;
@@ -44,11 +62,21 @@ namespace Algorithm.Structures
                 this.baseMatrix[i] = new T[countOfColumns];
         }
 
+        /// <summary>
+        /// Checks if the matrix is square matrix.
+        /// </summary>
+        /// <returns>true if matrix is square, false otherwise.</returns>
         public bool IsSquare()
         {
             return this.countOfRows == this.countOfColumns;
         }
 
+        /// <summary>
+        /// Gets the cell of matrix.
+        /// </summary>
+        /// <param name="rowNumber">number of row</param>
+        /// <param name="columnNumber">number of column</param>
+        /// <returns>cell of matrix</returns>
         public T this[int rowNumber, int columnNumber]
         {
             get => this.baseMatrix[rowNumber][columnNumber];

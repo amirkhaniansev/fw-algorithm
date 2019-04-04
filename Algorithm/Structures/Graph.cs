@@ -26,10 +26,19 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Model for representing graph.
+    /// </summary>
     public class Graph
     {
+        /// <summary>
+        /// Gets or sets collection of vertices.
+        /// </summary>
         public VerticesCollection Vertices { get; set; }
 
+        /// <summary>
+        /// Gets or sets collection of edges.
+        /// </summary>
         public EdgesCollection Edges { get; set; }
     }
 }

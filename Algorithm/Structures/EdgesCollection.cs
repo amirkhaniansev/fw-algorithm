@@ -31,20 +31,41 @@ using System.Collections;
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Collection of edges.
+    /// </summary>
     public class EdgesCollection : IEnumerable<Edge>
     {
+        /// <summary>
+        /// Storage for edges.
+        /// </summary>
         private readonly HashSet<Edge> edges;
 
+        /// <summary>
+        /// Collection of vertices.
+        /// </summary>
         private readonly VerticesCollection vertices;
 
+        /// <summary>
+        /// Gets count of edges.
+        /// </summary>
         public int Count => this.edges.Count;
 
+        /// <summary>
+        /// Creates new instance of <see cref="EdgesCollection"/>
+        /// </summary>
+        /// <param name="vertices">vertices</param>
+        /// <param name="edges">source of edges</param>
         public EdgesCollection(VerticesCollection vertices, IEnumerable<Edge> edges)
         {
             this.vertices = vertices;
             this.edges = new HashSet<Edge>(edges);
         }
 
+        /// <summary>
+        /// Adds edge to the collection of edges.
+        /// </summary>
+        /// <param name="edge">edge that will be added</param>
         public void AddEdge(Edge edge)
         {
             if (edge == null)
@@ -75,6 +96,12 @@ namespace Algorithm.Structures
             this.edges.Add(edge);
         }
 
+        /// <summary>
+        /// Tries to get the edge with the given vertices.
+        /// </summary>
+        /// <param name="from">first vertex</param>
+        /// <param name="to">second vertex</param>
+        /// <returns>edge if it is found and null,otherwise.</returns>
         public Edge TryGet(Vertex from, Vertex to)
         {
             return this.edges
@@ -84,11 +111,19 @@ namespace Algorithm.Structures
                     (e.First.Equals(to) && e.Second.Equals(from) && e.Direction == EdgeDirection.Both));
         }
 
+        /// <summary>
+        /// Gets enumerator.
+        /// </summary>
+        /// <returns>enumerator.</returns>
         public IEnumerator<Edge> GetEnumerator()
         {
             return this.GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets enumerator.
+        /// </summary>
+        /// <returns>enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();

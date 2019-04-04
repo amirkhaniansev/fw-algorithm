@@ -26,6 +26,10 @@
 
 namespace Algorithm
 {
+    /// <summary>
+    /// Color for graph representation matrix cells.
+    /// Values correspond .NET ConsoleColor.
+    /// </summary>
     public enum Color
     {
         Black           = 0x0,

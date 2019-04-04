@@ -26,16 +26,36 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Edge of graph
+    /// </summary>
     public class Edge
     {
+        /// <summary>
+        /// Gets or sets first vertex of graph edge.
+        /// </summary>
         public Vertex First { get; set; }
 
+        /// <summary>
+        /// Gest or sets second vertex of graph edge.
+        /// </summary>
         public Vertex Second { get; set; }
 
+        /// <summary>
+        /// Gets or sets direction of edge.
+        /// </summary>
         public EdgeDirection Direction { get; set; }
 
+        /// <summary>
+        /// Gets or sets length of edge.
+        /// </summary>
         public double Length { get; set; }
 
+        /// <summary>
+        /// Checks if the edges are equal.
+        /// </summary>
+        /// <param name="obj">edge that will be compared</param>
+        /// <returns>true, if edges are equal and false, otherwise</returns>
         public override bool Equals(object obj)
         {
             var edge = obj as Edge;
@@ -45,11 +65,21 @@ namespace Algorithm.Structures
                    this.Direction == edge.Direction;
         }
 
+        /// <summary>
+        /// Gets hashcode of edge.
+        /// </summary>
+        /// <returns>hashcode of edge.</returns>
         public override int GetHashCode()
         {
             return this.First.GetHashCode() ^ this.Second.GetHashCode();
         }
 
+        /// <summary>
+        /// Check if the edges are equal with the given direction.
+        /// </summary>
+        /// <param name="edge">edge to be compared</param>
+        /// <param name="direction">direction</param>
+        /// <returns>true, if the edges are equal, false otherwise</returns>
         public bool IsEqual(Edge edge, EdgeDirection? direction = null)
         {
             return this.First == edge.First && 

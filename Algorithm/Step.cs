@@ -28,12 +28,24 @@ using Algorithm.Structures;
 
 namespace Algorithm
 {
+    /// <summary>
+    /// Step of algrorithm
+    /// </summary>
     public class Step
     {
+        /// <summary>
+        /// Gets or sets number of step
+        /// </summary>
         public int Number { get; set; }
 
+        /// <summary>
+        /// Gets or sets A matrix of algorithm step
+        /// </summary>
         public SquareMatrix<Cell<double>> A { get; set; }
 
+        /// <summary>
+        /// Gest or sets B matrix of algorithm step
+        /// </summary>
         public SquareMatrix<Cell<int>> B { get; set; }
     }
 }

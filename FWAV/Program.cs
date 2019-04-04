@@ -31,14 +31,24 @@ using Algorithm.Structures;
 
 namespace FWAV
 {
+    /// <summary>
+    /// Main class
+    /// </summary>
     internal static class Program
     {
+        /// <summary>
+        /// Entry point 
+        /// </summary>
+        /// <param name="args">arguments of programm</param>
         static void Main(string[] args)
         {
             try
             {
+                // testing algorithm implementation
+
                 Console.WriteLine("Input vertices separeted by comma.");
 
+                // reading vertices input
                 var verticesInput = Console.ReadLine();
                 var vertices = verticesInput.Split(new[] { ',' })
                     .Select(v => new Vertex
@@ -49,6 +59,7 @@ namespace FWAV
 
                 Console.WriteLine("Input edges separated by comma in this way : v1 -> v2 length");
 
+                // reading edges input
                 var edgesInput = Console.ReadLine();
                 var edges = edgesInput.Split(new[] { ',' })
                     .Select(e =>
@@ -73,18 +84,24 @@ namespace FWAV
                     })
                     .ToList();
 
+                // constructing algoritm-specific structures
                 var verticesCollection = new VerticesCollection(vertices);
                 var edgesCollection = new EdgesCollection(verticesCollection, edges);
 
+                // constructing graph
                 var graph = new Graph
                 {
                     Vertices = verticesCollection,
                     Edges = edgesCollection
                 };
 
+                // constructing adjacency matrix
                 var adjacencyMatrix = new AdjacencyMatrix(graph);
+
+                // constructing algoritm instance
                 var algorithm = new FWAlgorithm(adjacencyMatrix);
 
+                // constructing printer for printing algorithm step matrices
                 var printer = new Action<int, string, dynamic>((c, s, m) =>
                 {
                     Console.WriteLine($"{s}{c}:");
@@ -114,6 +131,7 @@ namespace FWAV
                     Console.WriteLine();
                 });
 
+                // executing algorithm
                 var count = 0;
                 while (algorithm.Next())
                 {
@@ -128,10 +146,12 @@ namespace FWAV
             }
             catch (Exception ex)
             {
+                // printing exception message
                 Console.WriteLine(ex.Message);
             }
             finally
             {
+                // finalizing
                 Console.WriteLine("Hit <Enter> to close...");
                 Console.ReadLine();
                 Console.WriteLine("Closing...");

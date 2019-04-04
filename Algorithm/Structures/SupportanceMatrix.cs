@@ -26,8 +26,15 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Model for supportance matrix in graph
+    /// </summary>
     public class SupportanceMatrix : SquareMatrix<Cell<int>>
     {
+        /// <summary>
+        /// Creates new instance of <see cref="SupportanceMatrix"/>
+        /// </summary>
+        /// <param name="size">size of matrix</param>
         public SupportanceMatrix(int size) : base(size)
         {
         }

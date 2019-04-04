@@ -30,43 +30,81 @@ using System.Collections.Generic;
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Collection of vertices
+    /// </summary>
     public class VerticesCollection : IEnumerable<Vertex>
     {
+        /// <summary>
+        /// Storage for vertices
+        /// </summary>
         private readonly HashSet<Vertex> vertices;
 
+        /// <summary>
+        /// Gets the count of vertices
+        /// </summary>
         public int Count => this.vertices.Count;
 
+        /// <summary>
+        /// Creates new instance of <see cref="VerticesCollection"/>
+        /// </summary>
         public VerticesCollection()
         {
             this.vertices = new HashSet<Vertex>();
         }
 
+        /// <summary>
+        /// Creates new instance of <see cref="VerticesCollection"/> from the source.
+        /// </summary>
+        /// <param name="source">source of vertices</param>
         public VerticesCollection(IEnumerable<Vertex> source)
         {
             this.vertices = new HashSet<Vertex>(source);
         }
 
+        /// <summary>
+        /// Tries to add a new vertex to the collection of vertices.
+        /// </summary>
+        /// <param name="vertex">vertex that will be added.</param>
+        /// <returns>true if vertesx is successfully added, false otherwise.</returns>
         public bool TryAddVertex(Vertex vertex)
         {
             return this.vertices.Add(vertex);
         }
 
+        /// <summary>
+        /// Adss vertex to the collection of vertices.
+        /// </summary>
+        /// <param name="vertex">vertex to be added</param>
         public void AddVertex(Vertex vertex)
         {
             if (!this.TryAddVertex(vertex))
                 throw new ArgumentException("Vertex already exists.");
         }
 
+        /// <summary>
+        /// Checks if the vertex exists in the collection
+        /// </summary>
+        /// <param name="vertex">vertex to check</param>
+        /// <returns>true, if vertex exists and false, otherwise.</returns>
         public bool Exists(Vertex vertex)
         {
             return this.vertices.Contains(vertex);
         }
 
+        /// <summary>
+        /// Gets enumerator
+        /// </summary>
+        /// <returns>enumerator</returns>
         public IEnumerator<Vertex> GetEnumerator()
         {
             return this.vertices.GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets enumerator
+        /// </summary>
+        /// <returns>enumerator</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();

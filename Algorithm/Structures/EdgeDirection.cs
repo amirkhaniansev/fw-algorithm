@@ -26,6 +26,9 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Enum for direction of graph edges
+    /// </summary>
     public enum EdgeDirection : byte
     {
         FromFirstToSecond   = 0x0,

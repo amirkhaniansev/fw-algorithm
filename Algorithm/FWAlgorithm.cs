@@ -30,29 +30,60 @@ using Algorithm.Structures;
 
 namespace Algorithm
 {
+    /// <summary>
+    /// Floyd-Warshall algorithm implementation.
+    /// </summary>
     public class FWAlgorithm
     {
+        /// <summary>
+        /// Adjacency matrix of graph
+        /// </summary>
         private readonly AdjacencyMatrix initialAdjacencyMatrix;
 
+        /// <summary>
+        /// Steps of algorithm
+        /// </summary>
         private readonly List<Step> steps;
 
+        /// <summary>
+        /// Count of algorithm steps
+        /// </summary>
         private readonly int count;
 
+        /// <summary>
+        /// Count step counter
+        /// </summary>
         private int current;
 
+        /// <summary>
+        /// Gets first step of algorithm
+        /// </summary>
         public Step FirstStep => this.steps.FirstOrDefault();
 
+        /// <summary>
+        /// Gets last step of algorithm
+        /// </summary>
         public Step LastStep => this.steps.LastOrDefault();
 
+        /// <summary>
+        /// Creates new instance of <see cref="FWAlgorithm"/>
+        /// </summary>
+        /// <param name="initialAdjacencyMatrix">adjacency matrix for graph</param>
         public FWAlgorithm(AdjacencyMatrix initialAdjacencyMatrix)
         {
+            // setting fields
             this.initialAdjacencyMatrix = initialAdjacencyMatrix;
             this.count = initialAdjacencyMatrix.Size;
             this.current = -1;
 
+            // initializing steps
             this.steps = new List<Step>(initialAdjacencyMatrix.Size);
         }
 
+        /// <summary>
+        /// Does the next step of algorithm.
+        /// </summary>
+        /// <returns>true, if there is still steps to do and false, otherwise.</returns>
         public bool Next()
         {
             if(this.current == -1)
@@ -72,22 +103,29 @@ namespace Algorithm
             var bValue = default(int);
             var color = default(Color);
             
+            // starting iteration
+            // the complexity of every step is:
+            // O(|V|) where V = {v0, v1, ... , vn} set of vertices for G graph
             for(var i = 0; i < this.count; i++)
             {
                 for(var j = 0; j < this.count; j++)
                 {   
+                    // skipping fixed column
                     if(j == this.current)
                     {
                         step.B[i, j] = lastB[i, j];
 
+                        // skipping fixed row
                         if(i == this.current)
                         {
                             step.A[i, j] = lastA[i, j]; continue;
                         }
                     }
                     
+                    // counting the sum of fixed cell
                     sum = lastA[i, this.current].Value + lastA[this.current, j].Value;
-
+                    
+                    // setting value
                     if(lastA[i, j].Value > sum)
                     {
                         aValue = sum;
@@ -101,17 +139,24 @@ namespace Algorithm
                         color = Color.White;
                     }
 
+                    // initializing cells
                     step.A[i, j] = new Cell<double>(color, lastA[i, j].Point, aValue);
                     step.B[i, j] = new Cell<int>(color, lastB[i, j].Point, bValue);
                 }
             }
 
+            // incrementing algorithm step counter
             this.current++;
+
+            // adding step
             this.steps.Add(step);
 
             return true;
         }
 
+        /// <summary>
+        /// Initializes algorithm doing the first step.
+        /// </summary>
         private void DoFirstStep()
         {
             var firstStep = this.CreateStep();
@@ -124,11 +169,15 @@ namespace Algorithm
                     firstStep.B[i, j] = new Cell<int>(Color.White, new Point(i, j), j + 1);
                 }
             }
-
+            
             this.current++;
             this.steps.Add(firstStep);
         }
         
+        /// <summary>
+        /// Creates step for algorithm
+        /// </summary>
+        /// <returns>step</returns>
         private Step CreateStep()
         {
             return new Step

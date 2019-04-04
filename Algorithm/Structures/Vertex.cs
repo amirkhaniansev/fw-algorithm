@@ -26,15 +26,30 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Vertex of graph
+    /// </summary>
     public class Vertex
     {
+        /// <summary>
+        /// Gets or sets graph number
+        /// </summary>
         public int Number { get; set; }
 
+        /// <summary>
+        /// Gets hashcode of vertex.
+        /// </summary>
+        /// <returns>hashcode of vertex.</returns>
         public override int GetHashCode()
         {
             return this.Number.GetHashCode();
         }
 
+        /// <summary>
+        /// Checks if vertices are equal.
+        /// </summary>
+        /// <param name="obj">vertex that will be compared.</param>
+        /// <returns>true, if verties are equal, false otherwise</returns>
         public override bool Equals(object obj)
         {
             return this.GetHashCode() == obj.GetHashCode();

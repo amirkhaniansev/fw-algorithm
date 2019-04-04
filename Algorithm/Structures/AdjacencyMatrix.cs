@@ -26,21 +26,39 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Adjacency matrix for representing graph.
+    /// </summary>
     public class AdjacencyMatrix : SquareMatrix<Cell<double>>
     {
+        /// <summary>
+        /// Collection of graph vertices.
+        /// </summary>
         private readonly VerticesCollection vertices;
 
+        /// <summary>
+        /// Collection of graph edges.
+        /// </summary>
         private readonly EdgesCollection edges;
 
+        /// <summary>
+        /// Creates new instance of <see cref="AdjacencyMatrix"/>
+        /// </summary>
+        /// <param name="graph">graph</param>
         public AdjacencyMatrix(Graph graph) 
             : base(graph.Vertices.Count)
         {
+            // setting fields
             this.vertices = graph.Vertices;
             this.edges = graph.Edges;
 
+            // constructing graph adjacency matrix
             this.ConstructAdjacencyMatrix();
         }
 
+        /// <summary>
+        /// Construct adjacency matrix for graph from the vertices and edges
+        /// </summary>
         private void ConstructAdjacencyMatrix()
         {
             var i = 0;

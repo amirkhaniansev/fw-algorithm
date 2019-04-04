@@ -26,16 +26,36 @@
 
 namespace Algorithm
 {
+    /// <summary>
+    /// Class for modeling the cell in graph representation matrices.
+    /// </summary>
+    /// <typeparam name="TValue">Type of cell value</typeparam>
     public class Cell<TValue>
     {
+        /// <summary>
+        /// Gets or sets color
+        /// </summary>
         public Color Color { get; set; }
 
+        /// <summary>
+        /// Gets or sets point
+        /// </summary>
         public Point Point { get; set; }
 
+        /// <summary>
+        /// Gets or sets value
+        /// </summary>
         public TValue Value { get; set; }
 
+        /// <summary>
+        /// Creates new instance of <see cref="Cell{TValue}"/>
+        /// </summary>
+        /// <param name="color">color of cell</param>
+        /// <param name="point">point of cell</param>
+        /// <param name="value">value of cell</param>
         public Cell(Color color, Point point, TValue value)
         {
+            // setting properties of cell
             this.Color = color;
             this.Point = point;
             this.Value = value;

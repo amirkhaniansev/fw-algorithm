@@ -26,17 +26,35 @@
 
 namespace Algorithm.Structures
 {
+    /// <summary>
+    /// Class for modeling square matrix.
+    /// </summary>
+    /// <typeparam name="T">Type of cell in matrix.</typeparam>
     public class SquareMatrix<T> : Matrix<T>
     {
+        /// <summary>
+        /// Size of square matrix
+        /// </summary>
         private readonly int size;
 
+        /// <summary>
+        /// Gets the size of matrix
+        /// </summary>
         public int Size => this.size;
 
+        /// <summary>
+        /// Creates new instance of <see cref="SquareMatrix{T}"/>
+        /// </summary>
+        /// <param name="size">size of matrix</param>
         public SquareMatrix(int size) : base(size, size)
         {
             this.size = size;
         }
         
+        /// <summary>
+        /// Creates new instance of <see cref="SquareMatrix{T}"/> copying the given matrix.
+        /// </summary>
+        /// <param name="matrix">matrix that will be copied</param>
         public SquareMatrix(SquareMatrix<T> matrix) : this(matrix.size)
         {
             for (var i = 0; i < this.size; i++)

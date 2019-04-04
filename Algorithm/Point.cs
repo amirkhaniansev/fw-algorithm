@@ -26,16 +26,31 @@
 
 namespace Algorithm
 {
+    /// <summary>
+    /// Model for representing the location of cell in matrix
+    /// </summary>
     public class Point
     {
+        /// <summary>
+        /// Creates new instance of <see cref="Pooint"/>
+        /// </summary>
+        /// <param name="x">X coordinate</param>
+        /// <param name="y">Y coordinate</param>
         public Point(int x, int y)
         {
+            // setting coordinates
             this.X = x;
             this.Y = y;
         }
 
+        /// <summary>
+        /// Gets or sets X coordinate
+        /// </summary>
         public int X { get; set; }
 
+        /// <summary>
+        /// Gets or sets Y coordinate
+        /// </summary>
         public int Y { get; set; }
     }
 }
