@@ -105,7 +105,7 @@ namespace Algorithm
             
             // starting iteration
             // the complexity of every step is:
-            // O(|V|) where V = {v0, v1, ... , vn} set of vertices for G graph
+            // O(|V| ^ 2) where V = {v0, v1, ... , vn} set of vertices for G graph
             for(var i = 0; i < this.count; i++)
             {
                 for(var j = 0; j < this.count; j++)
